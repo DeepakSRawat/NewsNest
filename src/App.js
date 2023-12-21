@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "./components/NavBar";
 import News from "./components/News";
+import LoadingBar from "react-top-loading-bar";
 
 import {
   BrowserRouter,
@@ -9,19 +10,31 @@ import {
 } from "react-router-dom";
 
 export default class App extends Component {
+  pageSize = 15;
+  apiKey = process.env.REACT_APP_NEWS_API;
+
+  state = {
+    progress: 0,
+  };
+  setProgress = (progress) => {
+    this.setState({ progress: progress });
+  };
   render() {
     return (
       <div>
         <BrowserRouter>
           <NavBar />
+          <LoadingBar color="#f11946" progress={this.state.progress} />
           <Routes>
             <Route
               exact
               path="/"
               element={
                 <News
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
                   key="general"
-                  pageSize={6}
+                  pageSize={this.pageSize}
                   country="in"
                   category="general"
                 />
@@ -32,8 +45,10 @@ export default class App extends Component {
               path="/business"
               element={
                 <News
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
                   key="business"
-                  pageSize={6}
+                  pageSize={this.pageSize}
                   country="in"
                   category="business"
                 />
@@ -44,8 +59,10 @@ export default class App extends Component {
               path="/entertainment"
               element={
                 <News
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
                   key="entertainment"
-                  pageSize={6}
+                  pageSize={this.pageSize}
                   country="in"
                   category="entertainment"
                 />
@@ -56,8 +73,10 @@ export default class App extends Component {
               path="/general"
               element={
                 <News
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
                   key="general"
-                  pageSize={6}
+                  pageSize={this.pageSize}
                   country="in"
                   category="general"
                 />
@@ -68,8 +87,10 @@ export default class App extends Component {
               path="/health"
               element={
                 <News
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
                   key="health"
-                  pageSize={6}
+                  pageSize={this.pageSize}
                   country="in"
                   category="health"
                 />
@@ -80,8 +101,10 @@ export default class App extends Component {
               path="/science"
               element={
                 <News
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
                   key="science"
-                  pageSize={6}
+                  pageSize={this.pageSize}
                   country="in"
                   category="science"
                 />
@@ -92,8 +115,10 @@ export default class App extends Component {
               path="/sports"
               element={
                 <News
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
                   key="sports"
-                  pageSize={6}
+                  pageSize={this.pageSize}
                   country="in"
                   category="sports"
                 />
@@ -104,8 +129,10 @@ export default class App extends Component {
               path="/technology"
               element={
                 <News
+                  apiKey={this.apiKey}
+                  setProgress={this.setProgress}
                   key="technology"
-                  pageSize={6}
+                  pageSize={this.pageSize}
                   country="in"
                   category="technology"
                 />
