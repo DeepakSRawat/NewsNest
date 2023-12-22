@@ -11,9 +11,15 @@ export default class NewsItem extends Component {
             style={{
               position: "absolute",
               right: "0",
+              marginRight: "3px",
             }}
           >
-            <span className="badge rounded-pill bg-danger">{source}</span>
+            <span
+              className="badge rounded-pill bg-danger"
+              style={{ boxShadow: "0 0 5px 0 rgba(0,0,0)" }}
+            >
+              {source}
+            </span>
           </div>
           <img
             src={
